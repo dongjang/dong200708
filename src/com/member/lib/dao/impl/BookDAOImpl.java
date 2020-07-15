@@ -269,17 +269,17 @@ public class BookDAOImpl implements BookDAO {
 		Map<String, Object> map = new HashMap<>();
 		 map.put("b_title", "자바의정석");
 		 map.put("b_author", "남궁성");
-		 map.put("b_desc", "광고오진다.");
+		 map.put("b_desc", "광고오진다");
 		// bdao.insertBook(map);
 		// List<Map<String, Object>> bookList = bdao.selectBookList(map);
 		 //System.out.println(bdao.selectBook(1));
 		// int result = bdao.deleteBook(21);
-		 //System.out.println("삭제 갯수 : " + result);
+		 //System.out.println("�궘�젣 媛��닔 : " + result);
 		 map.put("b_num", 2);
 		 int result = bdao.updateBook(map);
 		 
 		 
-		 System.out.println("수정 갯수 : "  + result);
+		 System.out.println("수정갯수 : "  + result);
 		 
 		 
 		 

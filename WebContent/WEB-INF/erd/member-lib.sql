@@ -40,7 +40,7 @@ CREATE TABLE book
 	b_title varchar2(60) NOT NULL,
 	b_author varchar2(20) NOT NULL,
 	b_credat date NOT NULL,
-	b_disc clob,
+	b_desc clob,
 	PRIMARY KEY (b_num)
 );
 
