@@ -12,7 +12,6 @@ import java.util.Map;
 import com.member.lib.common.Connector;
 import com.member.lib.dao.MemberDAO;
 
-
 public class MemberDAOImpl implements MemberDAO {
 
 	@Override
@@ -23,20 +22,16 @@ public class MemberDAOImpl implements MemberDAO {
 		int result = 0;
 		try {
 
-		con = Connector.open();
-			String sql = "insert into member(m_num,m_name,M_ID,m_pwd,m_credat)\r\n" + 
-					"VALUES(SEQ_MEMBER_M_NUM.nextval,?,?,1234,sysdate)";
-			
+			con = Connector.open();
+			String sql = "insert into member(m_num,m_name,M_ID,m_pwd,m_credat)\r\n"
+					+ "VALUES(SEQ_MEMBER_M_NUM.nextval,?,?,?,sysdate)";
+
 			ps = con.prepareStatement(sql);
 			ps.setString(1, member.get("m_name").toString());
 			ps.setString(2, member.get("m_id").toString());
 			ps.setString(3, member.get("m_pwd").toString());
 
 			result = ps.executeUpdate();
-			
-		
-			
-
 
 		} catch (Exception e) {
 
@@ -62,7 +57,6 @@ public class MemberDAOImpl implements MemberDAO {
 		return result;
 
 	}
-	
 
 	@Override
 	public int updateMember(Map<String, Object> member) {
@@ -78,17 +72,12 @@ public class MemberDAOImpl implements MemberDAO {
 			sql += " m_id=?,";
 			sql += " m_pwd=?";
 			sql += " where m_num=?";
-			
-			
+
 			ps = con.prepareStatement(sql);
 			ps.setString(1, member.get("m_name").toString());
-
 			ps.setString(2, member.get("m_id").toString());
-
 			ps.setString(3, member.get("m_pwd").toString());
-
-			ps.setInt(4,(int) member.get("m_num"));
-			
+			ps.setInt(4, (int) member.get("m_num"));
 			result = ps.executeUpdate();
 			con.commit();
 
@@ -116,11 +105,6 @@ public class MemberDAOImpl implements MemberDAO {
 		return result;
 
 	}
-	
-
-	
-
-	
 
 	@Override
 	public int deleteMember(int mNum) {
@@ -129,20 +113,16 @@ public class MemberDAOImpl implements MemberDAO {
 
 		int result = 0;
 		try {
-
 			con = Connector.open();
 			String sql = "delete from member where m_num=?";
-			
+
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, mNum);
-
 			result = ps.executeUpdate();
 			con.commit();
 
 		} catch (Exception e) {
-
 			e.printStackTrace();
-
 		} finally {
 			try {
 				if (ps != null) {
@@ -173,7 +153,7 @@ public class MemberDAOImpl implements MemberDAO {
 		try {
 
 			con = Connector.open();
-		String sql = "select m_num, m_name, m_id,m_pwd,m_credat from member";
+			String sql = "select m_num, m_name, m_id,m_pwd,m_credat from member";
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 
@@ -212,7 +192,7 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 
 		return memberList;
-}
+	}
 
 	@Override
 	public Map<String, Object> selectMember(int mNum) {
