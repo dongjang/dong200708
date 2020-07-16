@@ -32,7 +32,7 @@ public class LentServiceImpl implements LentService {
 	public Map<String, Object> updateLent(Map<String, Object> lent) {
 		Map<String,Object> rMap = new HashMap<>();
 		int result =lentDAO.updateLent(lent);
-		rMap.put("msg",(result==1)?"도서 수정 성공":"도서 수정  성공");
+		rMap.put("msg",(result==1)?"수정 성공":"수정  성공");
 	
 		rMap.put("cnt", result);
 				return rMap;
@@ -42,10 +42,10 @@ public class LentServiceImpl implements LentService {
 	public Map<String, Object> deleteLent(int lNum) {
 		int result = lentDAO.deleteLent(lNum);
 		Map<String,Object> rMap = new HashMap<>();
-		rMap.put("msg","맴버 삭제 완료!");
+		rMap.put("msg","삭제 완료!");
 		
 		if(result!=1) {
-			rMap.put("msg","맴버 삭제 오류!");
+			rMap.put("msg","삭제 오류!");
 			
 		}
 		rMap.put("cnt",result);
